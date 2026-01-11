@@ -7,20 +7,23 @@ double calcLeiterstrom(double leistung_kw, double cosphi, int auswahl)
 {
     int nennspannung = 0;
     double stromfaktor = 1.0;
+    const char* stromartText = "";
 
     if (auswahl == 0) {              // Wechselstrom
         nennspannung = 230;
         stromfaktor = WECHSELSTROM;
+        stromartText = "Wechselstrom (1~)";
     }
     else if (auswahl == 1) {         // Drehstrom
         nennspannung = 400;
         stromfaktor = DREHSTROM;
+        stromartText = "Drehstrom (3~)";
     }
     else {
         std::cerr << "Ungueltige Stromart.\n";
         return 0.0;
     }
-
+    std::cout << "Stromart: " << stromartText  << ", Nennspannung: " << nennspannung << " V" << std::endl;
     return (leistung_kw * 1000.0) / (cosphi * nennspannung * stromfaktor);
 }
 
