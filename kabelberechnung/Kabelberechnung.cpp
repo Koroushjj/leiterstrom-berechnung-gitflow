@@ -34,6 +34,8 @@ int main()
     int auswahl = 0;
     double leistung = 0.0;
     double cosphi = 0.0;
+    double querschnitt;
+    double I_max = 0;
 
     std::cout << "Stromart waehlen (Wechselstrom = 0, Drehstrom= 1): ";
     std::cin >> auswahl;
@@ -54,6 +56,25 @@ int main()
     if (strom > 0) {
         std::cout << "Berechneter Leiterstrom: " << strom << " A\n";
     }
+    std::cout << "Kabelquerschnitt eingeben (mm^2): ";
+    std::cin >> querschnitt;
+    if (querschnitt == 0.5) I_max = 1,5;
+    else if (querschnitt == 1) I_max = 10;
+    else if (querschnitt == 1.5) I_max = 16;
+    else if (querschnitt == 2.5) I_max = 25;
+    else if (querschnitt == 4) I_max = 32;
+    else if (querschnitt == 6) I_max = 40;
+    else if (querschnitt == 10) I_max = 63;
+    else {
+        std::cout << "Unbekannter Kabelquerschnitt!" << std::endl;
+        return 0;
+    }
+
+    if (strom <= I_max)
+        std::cout << "Der gewaehlte Kabelquerschnitt ist ausreichend." << std::endl;
+    else
+        std::cout << "Warnung: Der Kabelquerschnitt ist nicht ausreichend!" << std::endl;
+
 
     return 0;
 }
