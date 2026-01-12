@@ -58,7 +58,7 @@ int main()
     }
     std::cout << "Kabelquerschnitt eingeben (mm^2): ";
     std::cin >> querschnitt;
-    if (querschnitt == 0.5) I_max = 1,5;
+    if (querschnitt == 0.5) I_max = 1.5;
     else if (querschnitt == 1) I_max = 10;
     else if (querschnitt == 1.5) I_max = 16;
     else if (querschnitt == 2.5) I_max = 25;
